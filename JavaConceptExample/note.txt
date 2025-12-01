@@ -1,0 +1,120 @@
+JAVA Basic Concept
+int a = 10; //Here 10 is a int literal
+
+//Other way to write for loop
+int i=1;
+        for(;i<=10;)
+        {
+            System.out.println(i);
+            i++;
+        }
+
+//JVM, JRE, JDK
+JDK => Used to develop Java apps (contains javac)
+       Covert source code to byte code
+       Contains JRE + development tools
+       Acts as an upper layer. 
+       Sequence JDK -> JRE -> JVM
+
+JRE => Provides the libraries + JVM required to run Java programs
+       Contains JVM and required class libraries (runtime environment)
+       JVM is a part of JRE
+       
+JVM => Executes the byte code
+       Converts byte code into machine code using JIT (Just-In-Time compiler)
+       Platform dependent, but bytecode is platform independent
+
+- Outer layer of JVM is a virtual layer
+- To run Java code, only JRE is needed.
+- To write/compile code, you need JDK.
+
+//Accessing element of 2-D Array using enhanced-for loop
+int arr[][]=new int[3][3];
+    for(int n[]:arr)        //n[] is an array 
+    {
+        for(int i:n)        //i for accessing element from n[]
+            System.out.print(i+"\t");
+        System.out.println();
+    }
+
+//String
+- By default string is immutable 
+- In heap memory we have String Constant Pool => that stores the string obj ref
+- To make it mutable => use StringBuffer or StringBuilder
+- str1 = Sunanda;
+  str2 = Sunanda;
+  SOP(str1==str2);      //Returns true as there memory ref is same. No new obj is created for str2. 
+- StringBuffer is thread-safe while StringBuilder is thread-unsafe
+- StringBuilder is faster
+
+//Static var, method, class
+- Static variable is common for all. Updating the static var will update the value of variable in all place
+    *Access* => ClassName.static_variable
+
+- We can access static var in Static Method directly but we cannot access non-static var in static method directly
+  For using non-static var we need to create object of that class and using dot operator(.) we can access non-static var
+
+- Static Block is called only once irrespective of how many times the object of class is created
+  Runs once when the class is loaded, before the main method.
+  Syntax for calling Static Block => Class.forName(Class_Name) => forces class loading -> triggers static block
+
+//Annoymous object
+Student student=new Student()
+  Contains two lines
+    Student student;
+    student=new Student()
+- If we are using only => new Student() => it becomes annoymous object.
+- Cannot be reused, as no name is given 
+
+//Points to note
+- By default Java imports package=> java.lang.*;
+- Importing package imports only files, not folders
+
+//Polymorphism
+- Compile-Time Polymorphism => Behavior during compile-time => Method Overloading
+- Run-Time Polymorphism => Behavior during run-time => Method Overriding
+
+//Dynamic Method Dispatch
+- Runtime Polymorphism
+- Inheritance is needed between class for Dynamic Method Dispatch
+
+//Final keyword
+- Final Variable => Cannot be re-initialized.
+  static final int a;   => Cannot be declared in main()
+- Final Method => Cannot be Overriden
+- Final Class => Cannot be inherited
+
+//Abstract Class and Method
+- Abstract Class contain both abstract method and concrete method
+- For defining abstract method class should be abstract
+- Object cannot be created for Abstract Class
+- Abstract Method => Method without body definition
+- Sub Class extending Abstract Class should implement all the abstract method 
+
+//Interface 
+- Methods are public, abstract
+- Variable are public, final, static
+- No memory for interface in heap
+
+//Exception Handling
+- Compile Time Error
+- Logical Error
+- Runtime Error 
+Hierarchy
+                  object
+                     |
+                  Throwable
+    -----------------------------------------
+    |                                        |
+  Error                                   Exception
+                                             |
+                              --------------------------------
+                              |              |                |
+                    Runtime Exception     SQLException    IOException
+                  [Unchecked Exception]   ------[Checked Exception]---
+- Checked Exception => We need to handle
+- Unchecked Exception => We can handle
+
+- System.out.println()
+  out is an object of PrintStream created inside System class
+  println is a method of PrintStream
