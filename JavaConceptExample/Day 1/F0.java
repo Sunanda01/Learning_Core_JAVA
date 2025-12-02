@@ -5,7 +5,7 @@ public class F0{
 }
 /* 
     - File name can be different from class name I
-    - t makes a debugging difficult if the source code and the bytecode is different
+    - It makes a debugging difficult if the source code and the bytecode is different
 
     Source Code => .java file
     Byte Code => .class file

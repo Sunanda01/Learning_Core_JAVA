@@ -94,7 +94,9 @@ Student student=new Student()
 //Interface 
 - Methods are public, abstract
 - Variable are public, final, static
-- No memory for interface in heap
+- Interfaces have no objects in heap, only constants + method signatures
+- Interfaces DO have a class object in the JVM method area.
+- They do NOT store instance fields because you cannot create objects.
 
 //Exception Handling
 - Compile Time Error
@@ -112,9 +114,9 @@ Hierarchy
                               |              |                |
                     Runtime Exception     SQLException    IOException
                   [Unchecked Exception]   ------[Checked Exception]---
-- Checked Exception => We need to handle
+- Checked Exception => We must handle
 - Unchecked Exception => We can handle
 
 - System.out.println()
-  out is an object of PrintStream created inside System class
-  println is a method of PrintStream
+  out is a static PrintStream object inside System class
+  println() is a method of PrintStream
