@@ -1,0 +1,27 @@
+-- UserSchema
+CREATE SCHEMA USER_DATABASE;
+USE USER_DATABASE;
+SHOW TABLES;
+
+-- Create Table User
+CREATE TABLE USER (
+                      USER_ID INT PRIMARY KEY,
+                      USER_NAME VARCHAR(20) NOT NULL,
+                      USER_EMAIL VARCHAR(30) NOT NULL
+);
+
+-- Insert User Details
+INSERT INTO USER VALUES(101,"SUNANDA SADHU","s@gmail.com");
+
+-- Update User Details
+UPDATE USER SET USER_NAME="SUNANDA S" WHERE USER_ID=101;
+
+-- Get All User
+SELECT * FROM USER;
+
+-- Get User By User_Id
+SELECT USER_ID,USER_NAME,USER_EMAIL FROM USER WHERE USER_ID=101;
+
+-- Delete User By User_Id
+DELETE FROM USER WHERE USER_ID=101;
+
