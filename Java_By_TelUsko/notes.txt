@@ -1,0 +1,54 @@
+//JVM Stack & Heap
+Java memory can be broadly understood using Stack and Heap.
+JVM Memory
+│
+├── Stack
+│   └── Method calls + local variables + references
+│
+└── Heap
+    └── Objects + instance fields
+
+Example:
+class Student {
+    int age;
+    String name;
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        int x = 10;
+
+        Student s = new Student();
+        s.age = 25;
+        s.name = "Sunanda";
+    }
+}    
+
+Conceptually:
+STACK                          HEAP
+
+main() frame                   Student object
+┌───────────────┐             ┌───────────────┐
+│ x = 10        │             │ age = 25      │
+│ s ────────────┼────────────►│ name ──────────┼──► "Sunanda"
+└───────────────┘             └───────────────┘
+
+- Stack → method execution and local variables/references.
+- Heap → objects created using new and their instance fields.
+- s is a reference variable in the main() stack frame.
+- The Student object referred to by s is in the heap.
+- age is an int, but because it is an instance field, it is part of the Student object on the heap.
+- When a method finishes, its stack frame is removed.
+- Objects with no reachable references can later be reclaimed by Garbage Collection (GC).
+
+
+// TODO: full flow with Stack Pointer & Class Loader
+
+//Jagged Array: 2D array where each row can have a different number of elements.
+
+//Array of Objects: Stores references to multiple objects of the same class.
+
+
+
+
