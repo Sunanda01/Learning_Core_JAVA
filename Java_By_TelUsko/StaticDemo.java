@@ -18,11 +18,18 @@ class Student {
         // System.out.println("Department: " + dept); // This will cause a compilation error because 'dept' is not static
     }
 }
+// class Department{
+//     static{
+//        System.out.println("Department class static block executed"); 
+//     }
+// }
 public class StaticDemo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         System.out.println("Main method executed");
         System.out.println(Student.college); // Accessing static variable using class name
         // Calling static method using class name
         Student.displayCollege();
+        // Class.forName("Department"); // This will load the Department class and execute its static block
+
     }
 }
