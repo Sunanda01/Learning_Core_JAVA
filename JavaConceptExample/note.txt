@@ -178,16 +178,27 @@ int arr[][]=new int[3][3];
 - StringBuffer is thread-safe while StringBuilder is thread-unsafe
 - StringBuilder is faster
 
-//Static var, method, class
-- Static variable is common for all. Updating the static var will update the value of variable in all place
+- Initialization with a String can increase the initial capacity, and later the capacity grows only when the existing capacity is insufficient. Initial Capacity: 16
+Ex:
+   StringBuffer stringBuffer = new StringBuffer("Hello");
+   stringBuffer.append(" JAVA");
+   SOP(stringBuffer + "\n Length => "+stringBuffer.length()+"\n Capacity => "+stringBuffer.capacity());
+
+Note: StringBuilder and StringBuffer have the same basic capacity concept and growth behavior; the major difference is that StringBuffer methods are synchronized (thread-safe), while StringBuilder is not.
+
+//Static Variable, Method, Block
+- Static variable is common for all. Updating the static var will update the value of variable in all place. Belongs to the class, not individual objects.
     *Access* => ClassName.static_variable
 
-- We can access static var in Static Method directly but we cannot access non-static var in static method directly
-  For using non-static var we need to create object of that class and using dot operator(.) we can access non-static var
+- Static Method: Belongs to the class. Can be called without creating an object.
+  We can access static var in Static Method directly but we cannot access non-static var in static method directly.
+  For using non-static var we need to create object of that class and using dot operator(.) we can access non-static var. Ex: new ClassName().var_name
 
 - Static Block is called only once irrespective of how many times the object of class is created
   Runs once when the class is loaded, before the main method.
-  Syntax for calling Static Block => Class.forName(Class_Name) => forces class loading -> triggers static block
+  Used for static initialization.
+  Useful for initializing static variables when initialization requires multiple statements or logic.
+    Syntax for calling Static Block => Class.forName(Class_Name) => forces class loading -> triggers static block
 
 //Annoymous object
 Student student=new Student()
