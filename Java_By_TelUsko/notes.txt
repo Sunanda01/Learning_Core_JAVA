@@ -87,3 +87,6 @@ Downcasting => Parent → Child, Explicit cast required, Can cause ClassCastExce
 // Boxing & Unboxing
 Boxing: Primitive → Wrapper
 Unboxing: Wrapper → Primitive
+
+//Inner Class => class defined inside another class. Can access members of the outer class directly
+Outer object → needed to create a non-static inner-class object.
