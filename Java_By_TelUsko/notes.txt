@@ -49,6 +49,41 @@ main() frame                   Student object
 
 //Array of Objects: Stores references to multiple objects of the same class.
 
+//Access Modifiers
+1. Private => accessible only inside the class where it is declared.
+2. Protected => Same package → protected is accessible. Different package → accessible to subclasses
+3. Default => can be accessed within the same class and anywhere in the same package. 
+              also called package-private access.
+
+                    private   default   protected   public
+------------------------------------------------------------
+Same Class             YES       YES        YES       YES
+Same Package           NO        YES        YES       YES
+Different Package
+  - Subclass            NO        NO         YES       YES
+  - Non-Subclass        NO        NO         NO        YES
+------------------------------------------------------------
 
 
+// toString(), equals(), hashCode()
+> toString()
+→ Default: ClassName@hex(hashCode())
+→ Override when you want meaningful object output
 
+> equals()
+→ Default: compares references (this == obj)
+→ Override when you want logical/value comparison
+
+> hashCode()
+→ Default: object-based hash value
+→ Override when equals() is overridden
+→ Used by HashMap / HashSet
+
+//Upcasting & Downcasting
+Upcasting => Child → Parent, Automatic, Usually safe
+
+Downcasting => Parent → Child, Explicit cast required, Can cause ClassCastException
+
+// Boxing & Unboxing
+Boxing: Primitive → Wrapper
+Unboxing: Wrapper → Primitive
