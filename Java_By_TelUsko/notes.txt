@@ -90,3 +90,10 @@ Unboxing: Wrapper → Primitive
 
 //Inner Class => class defined inside another class. Can access members of the outer class directly
 Outer object → needed to create a non-static inner-class object.
+
+//Anonymous Inner Class 
+→ Inner class without a name
+→ Created and instantiated at the same time
+→ Usually used for one-time implementation
+→ Can extend a class or implement an interface
+
