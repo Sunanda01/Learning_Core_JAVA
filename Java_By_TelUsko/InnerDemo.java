@@ -1,5 +1,5 @@
 package Java_By_TelUsko;
-class Outer {
+class InnerDemo {
     int x = 10;
     static int y = 20;
     class Inner {
@@ -17,15 +17,15 @@ class Outer {
     public static void main(String[] args) {
 
         // Calling Static method
-        Outer.Inner innerObj = new Outer().new Inner();
+        InnerDemo.Inner innerObj = new InnerDemo().new Inner();
         innerObj.display();
 
         // Static method can be called without creating an instance of Inner class
-        Outer.Inner.display(); 
+        InnerDemo.Inner.display(); 
 
         // Non-static Inner class requires an instance of Outer class to be created first
-        Outer obj = new Outer();
-        Outer.Inner innerObj1 = obj.new Inner();
+        InnerDemo obj = new InnerDemo();
+        InnerDemo.Inner innerObj1 = obj.new Inner();
         innerObj1.display1();
     }
 }
