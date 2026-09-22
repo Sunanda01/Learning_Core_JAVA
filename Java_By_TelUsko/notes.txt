@@ -97,3 +97,23 @@ Outer object → needed to create a non-static inner-class object.
 → Usually used for one-time implementation
 → Can extend a class or implement an interface
 
+//Interface: solves the problem of defining a common contract without forcing unrelated classes to share implementation or inheritance.
+    1. Interface gives us the contract
+    2. Enables polymorphism
+    3. Reduces coupling between classes
+    4. Allows multiple contracts
+    5. unrelated classes
+
+    Interface -> WHAT should be done -> Implementation -> HOW it is done
+
+> Why not just use an abstract class?
+- Java has single class inheritance 
+- but cannot extend another class at the same time
+** Interfaces allow a class to follow multiple contracts **
+
+> Interface types
+   |
+   ├── Normal       → Multiple abstract methods
+   ├── Functional   → Exactly ONE abstract method also called SAM (Single Abstract Method)
+   └── Marker       → ZERO abstract methods
+
