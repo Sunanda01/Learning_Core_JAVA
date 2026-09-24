@@ -241,9 +241,16 @@ Student student=new Student()
 - They do NOT store instance fields because you cannot create objects.
 
 //Exception Handling
-- Compile Time Error
-- Logical Error
-- Runtime Error 
+- Compile Time Error: Error detected during compilation, before the program runs.
+  Ex: int x = "10";   //incompatible types → Compiler stops the program.
+- Logical Error: Program runs successfully, but produces the wrong result because the logic is incorrect.
+- Runtime Error: Error occurs while the program is running. The code compiles, but crashes/throws an exception during execution.  
+
+- try      → code that may cause exception
+- catch    → handles the exception
+- throws   → declares that a method may throw exception
+- throw    → actually throws an exception
+
 Hierarchy
                   object
                      |
@@ -256,8 +263,29 @@ Hierarchy
                               |              |                |
                     Runtime Exception     SQLException    IOException
                   [Unchecked Exception]   ------[Checked Exception]---
-- Checked Exception => We must handle
-- Unchecked Exception => We can handle
+
+1. Checked Exception => We must handle. Compiler forces us to handle it or declare it with throws. If we don't handle/declare it → Compile-Time Error.
+
+2. Unchecked Exception => We can handle. Compiler does NOT force us to handle it. These extend RuntimeException. Compiles successfully → when executed → ArithmeticException.
+
+- Ducking Exception: Exception ducking means a method doesn't handle an exception itself; instead, it passes the responsibility to its caller using throws.
+Ex:
+import java.io.IOException;
+class Main {
+    static void readFile() throws IOException {
+        // Instead of handling IOException here,
+        // we pass it to the caller
+        throw new IOException("File error");
+    }
+    public static void main(String[] args) {
+        try {
+            readFile();
+        }
+        catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
 
 - System.out.println()
   out is a static PrintStream object inside System class
