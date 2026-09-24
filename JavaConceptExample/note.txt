@@ -250,6 +250,7 @@ Student student=new Student()
 - catch    → handles the exception
 - throws   → declares that a method may throw exception
 - throw    → actually throws an exception
+- finally  → code that we want to execute whether an exception occurs or not.
 
 Hierarchy
                   object
@@ -290,3 +291,10 @@ class Main {
 - System.out.println()
   out is a static PrintStream object inside System class
   println() is a method of PrintStream
+
+- System.in()
+  in is a static InputStream object inside System class
+  - System.in.read() -> gives ASCII value, reads one charater at a time
+
+  - Buffer Reader
+   
