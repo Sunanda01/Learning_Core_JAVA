@@ -117,3 +117,21 @@ Outer object → needed to create a non-static inner-class object.
    ├── Functional   → Exactly ONE abstract method also called SAM (Single Abstract Method)
    └── Marker       → ZERO abstract methods
 
+>StreamAPI
+- Stream is a way to process elements of a collection as a pipeline
+   Stream API
+   |
+   ├── stream()       → create stream
+   ├── filter()       → select elements
+   ├── map()          → transform elements
+   ├── sorted()       → sort
+   ├── distinct()     → remove duplicates
+   ├── limit()        → take first N
+   ├── skip()         → skip first N
+   ├── reduce()       → combine into one result
+   ├── collect()      → convert result to collection
+   ├── forEach()      → perform action on each
+   └── count()        → count elements
+
+>Map, Filter, Reduce, Sorted
+
