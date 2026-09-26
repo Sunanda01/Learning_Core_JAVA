@@ -1,6 +1,8 @@
 package Threads;
 class Counter{
     private int a=10;
+    
+    // synchronized → Controls concurrent access to shared data.
     public synchronized int increment(){
         return ++a;
     }

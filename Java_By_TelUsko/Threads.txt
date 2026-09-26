@@ -1,0 +1,184 @@
+> Java Threads & Multithreading
+1. Thread: Small unit of execution inside a program. 
+   - Can create additional threads to perform tasks concurrently.
+
+2. Multithreading: means running multiple threads within the same program.
+   - The JVM scheduler decides when each thread gets CPU time.
+
+3. Common Thread methods
+    | Method            | Purpose                              |
+    | ----------------- | ------------------------------------ |
+    | `start()`         | Starts a new thread                  |
+    | `run()`           | Contains the task executed by thread |
+    | `sleep()`         | Pauses current thread temporarily    |
+    | `join()`          | Waits for another thread to finish   |
+    | `getName()`       | Gets thread name                     |
+    | `setName()`       | Sets thread name                     |
+    | `currentThread()` | Gets currently executing thread      |
+
+4. Runnable: It is an interface. 
+   The relationship is:
+     Runnable
+        |
+        | defines task
+        ↓
+       run()
+        |
+        ↓
+      Thread
+        |
+        | executes
+        ↓
+      start()
+
+5. Thread VS Runnable
+    | Thread                         | Runnable                      |
+    | ------------------------------ | ----------------------------- |
+    | Class                          | Interface                     |
+    | `extends Thread`               | `implements Runnable`         |
+    | Task + thread are coupled      | Task is separated from thread |
+    | Cannot extend another class    | Can extend another class      |
+    | Less flexible                  | More flexible                 |
+    | Good for basic/simple examples | Generally preferred for tasks |
+
+6. start() vs run()
+- start(): Creates a new thread and executes run() on that thread.
+    Thread t = new Thread(() -> {
+        System.out.println("Running");
+    });
+    t.start();
+
+- run(): Just executes the method normally on the current thread. It does not start a new thread.
+    t.run();
+
+7. Race Condition: Occurs when multiple threads access and modify shared data at the same time, and the final result depends on the order in which the threads execute.
+   - Fix using synchronized: Only one thread can execute the synchronized method on the same object at a time.
+
+8. Thread State
+    - Java has 6 official thread states in Thread.State:
+        NEW
+        ↓
+        RUNNABLE
+        ↓
+        ┌──────────────┐
+        ↓              ↓
+        BLOCKED      WAITING
+        ↓              ↓
+        └──────→ RUNNABLE
+                ↑
+            TIMED_WAITING
+                ↓
+            TERMINATED
+
+    | State             | Meaning                                                                   |
+    | ----------------- | ------------------------------------------------------------------------- |
+    | NEW               | Thread object created, but `start()` not called                           |
+    | RUNNABLE          | Thread is ready/running; waiting for CPU or currently executing           |
+    | BLOCKED           | Waiting to acquire a monitor lock, usually due to `synchronized`          |
+    | WAITING           | Waiting indefinitely for another thread's action, e.g. `join()`, `wait()` |
+    | TIMED_WAITING     | Waiting for a specific amount of time, e.g. `sleep(1000)`, timed `join()` |
+    | TERMINATED        | `run()` has completed or thread has ended                                 |
+
+--------------------------------------------------------------------------------------------------------------
+
+> Java Backend Concurrency — Brief Notes
+1. ExecutorService: Used to manage and execute tasks using threads instead of manually creating threads.
+   Ex: 
+    ExecutorService executor = Executors.newFixedThreadPool(3);
+        executor.submit(() -> {
+            System.out.println("Task running");
+        });
+        executor.shutdown();
+
+2. Thread Pool: A collection of reusable worker threads.
+    Tasks → Queue → Thread Pool
+                      ↓
+                  T1  T2  T3
+    - Instead of creating a new thread for every task, existing threads are reused.
+    - Better resource management and avoids excessive thread creation.
+
+3. Callable / Future
+    Runnable → doesn't return a result.
+    Callable → can return a result.
+    Ex:
+        Callable<Integer> task = () -> 10 + 20;
+        Future<Integer> result = executor.submit(task);
+        System.out.println(result.get()); // 30
+
+4. CompletableFuture: Used for asynchronous and chained operations.
+    Ex:
+    CompletableFuture
+        .supplyAsync(() -> getUser())
+        .thenApply(user -> user.getName())
+        .thenAccept(name -> System.out.println(name));
+    - Useful when backend tasks need to run asynchronously or when multiple operations need to be composed
+    - CompletableFuture → async + chaining
+
+5. Thread Safety: Code is thread-safe when it behaves correctly even when multiple threads access it concurrently.
+    > Problem:
+        Thread 1 ──┐
+                ├──→ shared data
+        Thread 2 ──┘
+
+    > Common tools:
+        - synchronized
+        - volatile
+        - Atomic classes
+        - Concurrent Collections
+6. volatile: Ensures visibility of changes between threads. 
+        volatile boolean running = true;
+    If one thread changes:
+        running = false;
+    other threads can see the updated value.
+
+    - volatile → visibility
+    - volatile ≠ atomicity
+
+    > So: volatile int count; count++;        // is still not thread-safe.
+
+7. AtomicInteger: Provides atomic operations without manually using synchronized.
+    AtomicInteger count = new AtomicInteger(0);
+    count.incrementAndGet();
+    System.out.println(count.get());
+    > Common methods:
+        - get()
+        - incrementAndGet()
+        - decrementAndGet()
+        - addAndGet()
+        - compareAndSet()
+    > Remember: AtomicInteger → thread-safe atomic operations
+
+8. Concurrent Collections: Collections designed for concurrent access.
+    > Important ones:
+        - ConcurrentHashMap
+        - CopyOnWriteArrayList
+        - BlockingQueue
+    Example: ConcurrentHashMap<Integer, String> map = new ConcurrentHashMap<>();
+    - Useful when multiple threads need to access/modify collection data.
+
+9. Deadlock: Occurs when threads wait for each other's locks indefinitely.
+
+    Thread 1                  Thread 2
+    |                         |
+    Lock A                     Lock B
+    |                         |
+    wait for B              wait for A
+    |                         |
+    └──────── DEADLOCK ───────┘
+
+    > Basic prevention:
+        - Keep lock ordering consistent.
+        - Avoid unnecessary nested locks.
+        - Keep synchronized sections small.
+
+10. Atomicity VS Volatile
+
+| Feature                      | Atomicity                                      | `volatile`                                        |
+| ---------------------------- | ---------------------------------------------- | ------------------------------------------------- |
+| Meaning                      | Operation happens completely or not at all     | Ensures visibility of changes between threads     |
+| Main problem solved          | Prevents partial/interleaved operations        | Prevents threads from seeing stale values         |
+| Example                      | `count++` as one indivisible operation         | `volatile boolean running`                        |
+| Guarantees visibility?       | Depends on mechanism used                      | Yes                                               |
+| Guarantees atomic operation? | If the operation is actually atomic            | No                                                |
+| Useful for                   | Counters, shared updates                       | Flags/state variables                             |
+| Example                      | `AtomicInteger.incrementAndGet()`              | `volatile boolean running = true`                 |

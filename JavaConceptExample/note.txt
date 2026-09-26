@@ -295,6 +295,5 @@ class Main {
 - System.in()
   in is a static InputStream object inside System class
   - System.in.read() -> gives ASCII value, reads one charater at a time
-
   - Buffer Reader
    
