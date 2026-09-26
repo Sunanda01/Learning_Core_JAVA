@@ -240,7 +240,7 @@ Student student=new Student()
 - Interfaces DO have a class object in the JVM method area.
 - They do NOT store instance fields because you cannot create objects.
 
-//Exception Handling
+//Exception Handling  
 - Compile Time Error: Error detected during compilation, before the program runs.
   Ex: int x = "10";   //incompatible types → Compiler stops the program.
 - Logical Error: Program runs successfully, but produces the wrong result because the logic is incorrect.
