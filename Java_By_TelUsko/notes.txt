@@ -1,3 +1,14 @@
+//Java Operators
+1. Arithmetic: +, -, *, ,/ %
+2. Assignment: = +=, -=, *=, /,= %=
+3. Relational: ==, !=, >, <, >=, <=
+4. Logical: &&, ||, !
+5. Unary: ++, --, +, -, !
+6. Bitwise: &, |, ^, ~,
+7. Shift: <<, >>, >>>
+8. Ternary: condition ? true : false
+9. instanceof: obj instanceof Class
+
 //JVM Stack & Heap
 Java memory can be broadly understood using Stack and Heap.
 JVM Memory
@@ -163,9 +174,4 @@ Automatically provides: constructor + accessors + equals + hashCode + toString
     - Must be initialized
     - var is not a keyword: It's a reserved type name. So we can even use it as a variable name
     - Cannot be used for method parameters, return types, or fields.
-
-
-
-
-
-
+    
