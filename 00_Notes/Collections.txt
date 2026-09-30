@@ -1,0 +1,74 @@
+Java Collections Framework
+│
+├── Collection (Interface)
+│   │
+│   ├── List
+│   │   ├── ArrayList
+│   │   ├── LinkedList
+│   │   ├── Stack
+│   │   └── Vector
+│   │
+│   ├── Set
+│   │   ├── EnumSet
+│   │   ├── HashSet
+│   │   ├── LinkedHashSet
+│   │   └── TreeSet
+│   │
+│   └── Queue
+│       ├── ArrayDeque
+│       ├── LinkedList
+│       └── PriorityQueue
+│
+├── Map (Interface)
+│   ├── HashMap
+│   ├── TreeMap
+│   ├── EnumMap
+│   ├── LinkedHashMap
+│   └── WeakHashMap
+│
+└── Iterator (Interface)
+    └── ListIterator
+
+1. ArrayList:
+ArrayList is a resizable array implementation of List.
+- Problem with normal array: 
+    - Fixed size
+    - Cannot easily grow/shrink
+    - Manual resizing is required
+
+- Properties:
+    - Maintains insertion order       
+    - Allows duplicates               
+    - Allows null                     
+    - Dynamic/resizable               
+    - Fast random access (get)     
+    - Not thread-safe by default       
+
+- Traversing an ArrayList
+    1. Enhanced for loop — most common
+        for (int n : nums) {
+            System.out.println(n);
+        }
+
+    2. Normal for loop: Useful when you need the index:
+        for (int i = 0; i < nums.size(); i++) {
+            System.out.println(nums.get(i));
+        } 
+
+2. Iterator: It is used to traverse/iterate through elements of a Collection one by one.  
+- useful when we want to traverse and safely remove elements while iterating.
+
+- Important Interator Method
+    | Method      | Purpose                                       |
+    | ----------- | --------------------------------------------- |
+    | `hasNext()` | Checks whether another element exists         |
+    | `next()`    | Returns the next element                      |
+    | `remove()`  | Removes the last element returned by `next()` |
+
+- Enhanced for vs Iterator 
+    - For simple traversal, enhanced for is usually cleaner.
+    - Use an Iterator when we need explicit traversal control, especially safe removal during iteration.
+
+
+
+
