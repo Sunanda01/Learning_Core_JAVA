@@ -56,20 +56,6 @@ ArrayList is a resizable array implementation of List.
             System.out.println(nums.get(i));
         } 
 
-2. Iterator: It is used to traverse/iterate through elements of a Collection one by one.  
-- useful when we want to traverse and safely remove elements while iterating.
-
-- Important Interator Method
-    | Method      | Purpose                                       |
-    | ----------- | --------------------------------------------- |
-    | `hasNext()` | Checks whether another element exists         |
-    | `next()`    | Returns the next element                      |
-    | `remove()`  | Removes the last element returned by `next()` |
-
-- Enhanced for vs Iterator 
-    - For simple traversal, enhanced for is usually cleaner.
-    - Use an Iterator when we need explicit traversal control, especially safe removal during iteration.
-
 2. Stack: It is a LIFO (Last In, First Out) data structure.
   - pop() vs peek()
     - stack.peek() => only looks at the top.
@@ -100,4 +86,16 @@ B. Queue [FIFO]
 2. PriorityQueue
 
 
+C. Iterator: It is used to traverse/iterate through elements of a Collection one by one.  
+- useful when we want to traverse and safely remove elements while iterating.
 
+- Important Interator Method
+    | Method      | Purpose                                       |
+    | ----------- | --------------------------------------------- |
+    | `hasNext()` | Checks whether another element exists         |
+    | `next()`    | Returns the next element                      |
+    | `remove()`  | Removes the last element returned by `next()` |
+
+- Enhanced for vs Iterator 
+    - For simple traversal, enhanced for is usually cleaner.
+    - Use an Iterator when we need explicit traversal control, especially safe removal during iteration.
