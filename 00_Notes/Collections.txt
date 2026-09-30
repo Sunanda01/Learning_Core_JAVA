@@ -29,6 +29,7 @@ Java Collections Framework
 └── Iterator (Interface)
     └── ListIterator
 
+A. LIST
 1. ArrayList:
 ArrayList is a resizable array implementation of List.
 - Problem with normal array: 
@@ -69,6 +70,34 @@ ArrayList is a resizable array implementation of List.
     - For simple traversal, enhanced for is usually cleaner.
     - Use an Iterator when we need explicit traversal control, especially safe removal during iteration.
 
+2. Stack: It is a LIFO (Last In, First Out) data structure.
+  - pop() vs peek()
+    - stack.peek() => only looks at the top.
+    - stack.pop() => returns AND removes the top.
+
+3. LinkedList: doubly linked list implementation of the List interface.
+    → Nodes connected using links
+    → Slow index access
+    → Insertion/removal is efficient when you already have the node/position
+
+B. Queue [FIFO]
+        Deletion [front_side] <---- |===============| <---- Addition [rear_side]
+
+1. LinkedList: can implement the Queue interface, so we can use it as a FIFO (First In, First Out) data structure.
+
+    - Methods available
+    | Method      | Purpose              | Empty/Failure behavior                   |
+    | ----------- | -------------------- | ---------------------------------------- |
+    | `offer(x)`  | Add element          | Returns `false` if insertion fails       |
+    | `add(x)`    | Add element          | Throws exception if insertion fails      |
+    | `poll()`    | Remove front element | Returns `null` if queue is empty         |
+    | `remove()`  | Remove front element | Throws `NoSuchElementException` if empty |
+    | `peek()`    | View front element   | Returns `null` if queue is empty         |
+    | `element()` | View front element   | Throws `NoSuchElementException` if empty |
+    | `size()`    | Number of elements   | —                                        |
+    | `isEmpty()` | Check whether empty  | —                                        |
+
+2. PriorityQueue
 
 
 
