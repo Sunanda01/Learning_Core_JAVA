@@ -114,15 +114,6 @@ B. Queue [FIFO]
     | `size()`        | Number of elements |
     | `isEmpty()`     | Check empty        |
 
-
-
-
-
-
-
-
-
-
 C. Iterator: It is used to traverse/iterate through elements of a Collection one by one.  
 - useful when we want to traverse and safely remove elements while iterating.
 
@@ -136,3 +127,41 @@ C. Iterator: It is used to traverse/iterate through elements of a Collection one
 - Enhanced for vs Iterator 
     - For simple traversal, enhanced for is usually cleaner.
     - Use an Iterator when we need explicit traversal control, especially safe removal during iteration.
+
+D. Set
+1. HashSet: Set implementation used when we want to store unique elements.
+- No Duplicates               
+- Doesn't maintain insertion order 
+- Allows one null           
+- Fast add/search/remove    
+- Not Thread-safe               
+
+> Why are duplicates removed?
+    HashSet internally uses hashing. Java calculates a hash for 20 and uses it to determine where to store the element. 
+    - When you again do: nums.add(20); 
+    - it checks whether an equivalent element already exists.
+
+    | Feature         | ArrayList          | HashSet            |
+    | --------------- | ------------------ | ---------------    |
+    | Duplicates      | ✅                  | ❌               |
+    | Insertion order | ✅                  | ❌               |
+    | Index access    | ✅                  | ❌               |
+    | `contains()`    | O(n)               | Average O(1)       |
+    | Main use        | Ordered collection | Unique elements    |
+
+2. LinkedHashSet is a Set implementation that gives Unique elements and Insertion order maintained
+- LinkedHashSet uses additional links internally to maintain the insertion order, so it generally uses more memory than HashSet.
+- No Duplicates              
+- Maintains insertion order 
+- No Index access              
+- Allows one null           
+- Average add/search/remove O(1)
+- Thread-safe               
+
+3. TreeSet: Set implementation that stores unique elements in sorted order.
+- Elements are automatically maintained in sorted order.
+- No Duplicates                
+- No index access               
+- Average add/search/remove  O(log n)
+- Dont allow null               
+- Not Thread-safe                
