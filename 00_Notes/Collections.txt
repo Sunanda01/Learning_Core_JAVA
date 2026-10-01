@@ -84,6 +84,43 @@ B. Queue [FIFO]
     | `isEmpty()` | Check whether empty  | —                                        |
 
 2. PriorityQueue
+- not a sorted collection.
+- internally maintains a structure so that the highest-priority element is available at the head.
+- By default: smallest → highest priority
+
+3. ArrayDeque
+- double-ended queue (Deque) implemented using a resizable array.
+- allows insertion and removal from both ends.
+- Can be used as Stack and Queue
+- Resizable
+- Does NOT allow null elements
+- Not thread-safe
+  
+    Front                  Rear
+    ↓                      ↓
+    [10] → [20] → [30] → [40]
+    ↑                      ↑
+    addFirst()           addLast()
+    removeFirst()        removeLast()
+
+    | Method          | Purpose            |
+    | --------------- | ------------------ |
+    | `addFirst(x)`   | Add at front       |
+    | `addLast(x)`    | Add at rear        |
+    | `removeFirst()` | Remove from front  |
+    | `removeLast()`  | Remove from rear   |
+    | `peekFirst()`   | View front         |
+    | `peekLast()`    | View rear          |
+    | `size()`        | Number of elements |
+    | `isEmpty()`     | Check empty        |
+
+
+
+
+
+
+
+
 
 
 C. Iterator: It is used to traverse/iterate through elements of a Collection one by one.  
