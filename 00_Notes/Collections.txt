@@ -165,3 +165,70 @@ D. Set
 - Average add/search/remove  O(log n)
 - Dont allow null               
 - Not Thread-safe                
+
+> Sets with Custom Classes — equals() & hashCode()
+- When storing custom objects in HashSet / LinkedHashSet, Java needs to determine whether two objects are duplicates.
+- Important Rule: If: a.equals(b) == true Then: a.hashCode() == b.hashCode()
+    but same hashCode ≠ objects must be equal
+
+    equals() → Are these two objects equal?
+    hashCode() → Where should this object be looked for?
+
+E. Map
+1. HashMap: stores data in key-value pairs.
+- Important Properties:
+    ├── Key → Value pairs
+    ├── Keys are unique
+    ├── Values can be duplicated
+    ├── One null key allowed
+    ├── Multiple null values allowed
+    ├── No guaranteed order
+    ├── Average put/get/remove → O(1)
+    └── Not thread-safe
+
+2. TreeMap: stores data in key-value pairs, like HashMap, but keeps the keys sorted.
+- Important Properties:
+    ├── Key → Value pairs
+    ├── Keys are unique
+    ├── Keys are sorted
+    ├── Values can be duplicated
+    ├── get/put/remove → O(log n)
+    ├── Null key → ❌
+    └── Not thread-safe
+
+F. Collections: utility class in java.util that provides ready-made methods for working with collections like List, Set, etc.
+- Important: Collection is an interface, while Collections is a utility class.   
+- Important Methods
+    | Method                              | Purpose                       |
+    | ----------------------------------- | ----------------------------- |
+    | `Collections.sort(list)`            | Sort ascending                |
+    | `Collections.reverse(list)`         | Reverse order                 |
+    | `Collections.max(list)`             | Find maximum                  |
+    | `Collections.min(list)`             | Find minimum                  |
+    | `Collections.frequency(list, x)`    | Count occurrences             |
+    | `Collections.swap(list, i, j)`      | Swap elements                 |
+    | `Collections.binarySearch(list, x)` | Binary search in sorted list  |
+    | `Collections.fill(list, x)`         | Replace all elements with `x` |
+    | `Collections.shuffle(list)`         | Randomly shuffle              |
+
+G. Sorting Custom Classes: When we have objects of our own class, Java doesn't automatically know which field to sort by.
+
+    Custom Object Sorting
+    │
+    ├── Comparable
+    │   └── Natural/default sorting
+    │
+    └── Comparator
+        └── Custom/different sorting
+
+> Comparable vs Comparator
+    |                             | Comparable               | Comparator                   |
+    | --------------------------- | ------------------------ | ---------------------------- |
+    | Interface                   | `Comparable<T>`          | `Comparator<T>`              |
+    | Method                      | `compareTo()`            | `compare()`                  |
+    | Sorting defined             | Inside the class         | Outside the class            |
+    | Purpose                     | Natural/default ordering | Custom ordering              |
+    | Multiple sorting strategies | ❌ Not convenient        | ✅  Covenient               |
+    | Example                     | Student → sort by ID     | Student → sort by name/marks |
+
+
