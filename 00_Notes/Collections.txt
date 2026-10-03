@@ -196,6 +196,38 @@ E. Map
     ├── Null key → ❌
     └── Not thread-safe
 
+3. ConcurrentHashMap: Thread-safe Map designed for situations where multiple threads access and modify the map concurrently.
+- Important Properties:
+    ├── Key → Value pairs
+    ├── Keys are unique
+    ├── Thread-safe                    ✅
+    ├── Concurrent read/write          ✅
+    ├── Allows null key                ❌
+    ├── Allows null value              ❌
+    ├── Maintains insertion order      ❌
+    └── Average get/put → O(1)
+
+- ConcurrentHashMap provides useful atomic methods:
+
+    ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
+    map.putIfAbsent("Java", 1);
+    map.computeIfAbsent("Python", k -> 1);
+    map.merge("Java", 1, Integer::sum);
+
+> ConcurrentHashMap vs HashMap
+    | Feature           | HashMap    | ConcurrentHashMap |
+    | ----------------- | ---------  | ----------------- |
+    | Key-value pairs   | ✅         | ✅                 |
+    | Thread-safe       | ❌         | ✅                 |
+    | Concurrent access | ❌         | ✅                 |
+    | Null key          | ✅         | ❌                 |
+    | Null value        | ✅         | ❌                 |
+    | Average `get()`   | O(1)       | O(1)              |
+    | Average `put()`   | O(1)       | O(1)              |
+    | Iterator          | Fail-fast  | Weakly consistent |
+
+
+
 F. Collections: utility class in java.util that provides ready-made methods for working with collections like List, Set, etc.
 - Important: Collection is an interface, while Collections is a utility class.   
 - Important Methods
@@ -231,3 +263,46 @@ G. Sorting Custom Classes: When we have objects of our own class, Java doesn't a
     | Multiple sorting strategies | ❌ Not convenient        | ✅  Covenient               |
     | Example                     | Student → sort by ID     | Student → sort by name/marks |
 
+H. Vector: dynamic array implementation of the List interface.
+> Important Properties
+    ├── Dynamic size             
+    ├── Maintains insertion order 
+    ├── Allows duplicates         
+    ├── Allows null               
+    ├── Index access              
+    ├── Synchronized              
+    └── Legacy class              
+
+> Vector vs ArrayList
+    | Feature         | ArrayList | Vector       |
+    | --------------- | --------- | ---------    |
+    | Dynamic array   | ✅         | ✅         |
+    | Maintains order | ✅         | ✅         |
+    | Duplicates      | ✅         | ✅         |
+    | Index access    | O(1)      | O(1)         |
+    | Thread-safe     | ❌         | ✅         |
+    | Synchronized    | ❌         | ✅         |
+    | Modern choice   | ✅         | Usually ❌ |
+    | Legacy          | ❌         | ✅         |
+
+> Why was Vector created? The main difference is synchronization:
+    1. ArrayList -> Not synchronized -> Better for normal single-threaded use
+    2. Vector -> Synchronized methods -> Thread-safe -> Can have more synchronization overhead
+
+> clone() 
+├── Creates a copy of an object
+├── Defined in Object
+├── Cloneable is a marker interface
+├── super.clone() → shallow copy
+├── Different object → == returns false
+└── Can throw CloneNotSupportedException
+
+> ensureCapacity() is mainly used with ArrayList / Vector to make sure the internal array has enough capacity for a given number of elements.
+
+    ensureCapacity(100)
+            ↓
+    Reserve enough internal capacity
+            ↓
+    Adding elements may require fewer resizing operations
+
+- If we already know we're going to add many elements, ensureCapacity() can reduce repeated internal resizing/copying.
