@@ -231,4 +231,3 @@ G. Sorting Custom Classes: When we have objects of our own class, Java doesn't a
     | Multiple sorting strategies | ❌ Not convenient        | ✅  Covenient               |
     | Example                     | Student → sort by ID     | Student → sort by name/marks |
 
-
